@@ -1,24 +1,28 @@
-const currentDay = document.querySelector('.current-day')
-const funFact = document.querySelector('.fun-fact')
+// miejsce gdzie użytkownik wpisuje treść zadania
+let todoInput
+// info o braku zadań / konieczność wpisywania tekstu
+let errorInfo
+// przycisk ADD / dodaje nowe elementy do listy
+let addBtn
+// lista zadań / tagi UL
+let ulList
 
-const facts = [
-	'Krokodyl nie potrafi wystawić języka.',
-	'Każdy człowiek spędził około pół godziny jako pojedyncza komórka.',
-	'Dźwięk przemieszcza się 15 razy szybciej przez stal niż przez powietrze.',
-	'Leniwce potrzebują dwóch tygodni na strawienie jedzenia.',
-	'Goryle śpią nawet czternaście godzin dziennie.',
-	'Język kameleona jest dwukrotnie dłuższy od jego ciała.',
-	'Chińczycy w ciągu roku zużywają około 80 miliardów pałeczek.',
-	'Żeby wejść na Wieżę Eiffla trzeba pokonać aż 1710 stopni.',
-]
-
-const day = new Date()
-currentDay.textContent = day.toLocaleString('default', { weekday: 'long' })
-
-const showRandomFact = () => {
-	const number = Math.floor(Math.random() * facts.length)
-	console.log(number)
-	
-	funFact.textContent = facts[number]
+// wywoływanie funkcji
+const main = () => {
+	prepareDomElements()
+	prepareDomeEvents()
 }
-showRandomFact()
+// pobieranie wszystkich elementów
+const prepareDomElements = () => {
+	todoInput = document.querySelector('.todo-input')
+	errorInfo = document.querySelector('.error-info')
+	addBtn = document.querySelector('.btn-add')
+	ulList = document.querySelector('.todolist ul')
+
+}
+// nadawanie nasłuchiwania
+const prepareDomeEvents = () => {
+	
+}
+// strona internetowa zostaje wczytana - zabezpieczenie skryptu do wczytania strony
+document.addEventListener('DOMContentLoaded',main)
