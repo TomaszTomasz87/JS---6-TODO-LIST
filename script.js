@@ -7,7 +7,7 @@ let addBtn
 // lista zadań / tagi UL
 let ulList
 // nowo dodane zadanie LI
-let newTodos
+let newTodo
 
 // wywoływanie funkcji
 const main = () => {
@@ -28,9 +28,10 @@ const prepareDomeEvents = () => {
 
 const addNewTodo = () => {
 	if (todoInput.value !== '') {
-		newTodos = document.createElement('li')
-		newTodos.textContent = todoInput.value
-		ulList.append(newTodos)
+		newTodo = document.createElement('li')
+		newTodo.textContent = todoInput.value
+		createToolsArea()
+		ulList.append(newTodo)
 
 		todoInput.value = ''
 		errorInfo.textContent = ''
@@ -38,6 +39,26 @@ const addNewTodo = () => {
 		errorInfo.textContent = 'Wpisz treść zadania!'
 	}
 }
+const createToolsArea = () => {
+	
+	const toolsPanel = document.createElement('div')
+	toolsPanel.classList.add('tools')
+	newTodo.append(toolsPanel)
 
-// strona internetowa zostaje wczytana - zabezpieczenie skryptu do wczytania strony
+	const completeBtn = document.createElement('button')
+	completeBtn.classList.add('complete')
+	completeBtn.innerHTML = '<i class="fas fa-check"></i>'
+
+	const editBtn = document.createElement('button')
+	editBtn.classList.add('edit')
+	editBtn.textContent = 'EDIT'
+
+	const deleteBtn = document.createElement('button')
+	deleteBtn.classList.add('delete')
+	deleteBtn.innerHTML = '<i class="fas fa-times"></i>'
+	// strona internetowa zostaje wczytana - zabezpieczenie skryptu do wczytania strony
+	toolsPanel.append(completeBtn, editBtn, deleteBtn)
+
+}
+
 document.addEventListener('DOMContentLoaded', main)
